@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- ============================================================
+       NOUVEL TECHNO — Page Formations
+       Catalogue filtrable + calendrier des sessions
+       ============================================================ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nos formations — Nouvel Techno | IA, Web, Cybersécurité, Cloud</title>
+  <meta name="description" content="Catalogue des formations Nouvel Techno à Médenine : IA & Machine Learning, développement web, cybersécurité, cloud, prompt engineering et formations entreprises. Filtrez par catégorie, niveau, format et durée.">
+  <link rel="icon" type="image/svg+xml" href="images/logos/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ==================== EN-TÊTE & NAVIGATION ==================== -->
+  <header class="entete">
+    <div class="conteneur entete-inner">
+      <a href="index.html" class="logo" aria-label="Nouvel Techno — Accueil">
+        <img src="images/logos/logo.svg" alt="">
+        <span>Nouvel&nbsp;<b>Techno</b></span>
+      </a>
+      <nav class="nav-desktop" aria-label="Navigation principale">
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="formations.html" class="actif">Formations</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="formateurs.html">Formateurs</a></li>
+          <li><a href="temoignages.html">Témoignages</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="entete-actions">
+        <a class="btn btn-primaire" href="inscription.html">S'inscrire</a>
+        <button class="btn-menu" aria-label="Ouvrir le menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <nav class="nav-mobile" aria-label="Menu mobile">
+      <a href="index.html">Accueil</a>
+      <a href="formations.html" class="actif">Formations</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="formateurs.html">Formateurs</a>
+      <a href="temoignages.html">Témoignages</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn btn-primaire" href="inscription.html">S'inscrire</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ==================== BANDEAU ==================== -->
+    <section class="bandeau">
+      <div class="conteneur">
+        <h1>Nos formations</h1>
+        <p>Six pôles de compétences, du niveau débutant à avancé. Filtrez selon votre profil : catégorie, niveau, format et durée.</p>
+        <p class="fil-ariane"><a href="index.html">Accueil</a> / Formations</p>
+      </div>
+    </section>
+
+    <!-- ==================== CATALOGUE FILTRABLE ==================== -->
+    <section class="section">
+      <div class="conteneur">
+
+        <!-- Barre de filtres (génère le re-rendu via js/main.js) -->
+        <div class="barre-filtres" role="group" aria-label="Filtres de formations">
+          <label for="filtre-categorie" class="sr-only" style="position:absolute;left:-9999px;">Catégorie</label>
+          <select id="filtre-categorie">
+            <option value="tous">Toutes les catégories</option>
+            <option value="ia">IA & Data</option>
+            <option value="dev">Développement</option>
+            <option value="cyber">Cybersécurité</option>
+            <option value="cloud">Cloud</option>
+            <option value="entreprise">Entreprises</option>
+          </select>
+
+          <select id="filtre-niveau" aria-label="Niveau">
+            <option value="tous">Tous les niveaux</option>
+            <option value="debutant">Débutant</option>
+            <option value="intermediaire">Intermédiaire</option>
+            <option value="avance">Avancé</option>
+          </select>
+
+          <select id="filtre-format" aria-label="Format">
+            <option value="tous">Tous les formats</option>
+            <option value="presentiel">Présentiel</option>
+            <option value="ligne">En ligne</option>
+            <option value="hybride">Hybride</option>
+          </select>
+
+          <select id="filtre-duree" aria-label="Durée">
+            <option value="tous">Toutes les durées</option>
+            <option value="court">≤ 1 mois</option>
+            <option value="moyen">1 à 3 mois</option>
+            <option value="long">Plus de 3 mois</option>
+          </select>
+        </div>
+
+        <!-- Cartes de formations générées par js/main.js -->
+        <div class="grille grille-3" id="liste-formations"></div>
+      </div>
+    </section>
+
+    <!-- ==================== CALENDRIER DES SESSIONS ==================== -->
+    <section class="section section-fond" id="calendrier">
+      <div class="conteneur">
+        <div class="section-tete reveal">
+          <span class="sur-titre">Calendrier</span>
+          <h2>Prochaines sessions</h2>
+          <p>Les places sont limitées. La réservation se fait via le formulaire d'inscription.</p>
+        </div>
+        <div style="display:grid;gap:14px;" id="liste-sessions"></div>
+      </div>
+    </section>
+
+    <!-- ==================== BROCHURE + DEVIS ==================== -->
+    <section class="section">
+      <div class="conteneur grille grille-2">
+        <div class="carte reveal" style="text-align:center;">
+          <div style="font-size:2.6rem;">📄</div>
+          <h3 style="margin:10px 0;">Brochure complète 2026</h3>
+          <p style="color:var(--gris-texte);font-size:.93rem;">Programmes détaillés, tarifs, calendrier : tout est dans notre brochure PDF téléchargeable.</p>
+          <a class="btn btn-primaire" style="margin-top:16px;" href="documents/brochure-nouvel-techno.pdf" download>Télécharger la brochure (PDF)</a>
+        </div>
+        <div class="carte reveal" style="text-align:center;">
+          <div style="font-size:2.6rem;">🏢</div>
+          <h3 style="margin:10px 0;">Vous êtes une entreprise ?</h3>
+          <p style="color:var(--gris-texte);font-size:.93rem;">Programmes sur mesure pour vos équipes, dans vos locaux ou au centre. Recevez un devis gratuit sous 24 h.</p>
+          <a class="btn btn-contour" style="margin-top:16px;" href="contact.html?type=devis">Demander un devis</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== PIED DE PAGE ==================== -->
+  <footer class="pied">
+    <div class="conteneur pied-grille">
+      <div>
+        <a href="index.html" class="logo"><img src="images/logos/logo-blanc.svg" alt=""><span>Nouvel&nbsp;<b>Techno</b></span></a>
+        <p class="presentation">Centre de formation technologique à Médenine : des compétences pratiques, accessibles et demandées sur le marché.</p>
+        <div class="reseaux">
+          <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+          <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube">YT</a>
+        </div>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="formations.html">Formations</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="formateurs.html">Formateurs</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Formations</h4>
+        <ul>
+          <li><a href="formations.html">IA & Machine Learning</a></li>
+          <li><a href="formations.html">Développement Web</a></li>
+          <li><a href="formations.html">Cybersécurité</a></li>
+          <li><a href="formations.html">Cloud Computing</a></li>
+          <li><a href="contact.html?type=devis">Devis entreprises</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>Avenue Habib Bourguiba, Médenine 4100, Tunisie</li>
+          <li><a href="tel:+216900000000">+216 90 000 000</a></li>
+          <li><a href="mailto:contact@nouveltechno.tn">contact@nouveltechno.tn</a></li>
+          <li>Lun – Sam : 08h30 – 18h00</li>
+        </ul>
+        <form data-newsletter style="margin-top:14px;" aria-label="Inscription à la newsletter">
+          <div class="newsletter">
+            <input type="email" placeholder="Votre e-mail" required aria-label="Adresse e-mail">
+            <button class="btn btn-primaire" type="submit">OK</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="conteneur pied-bas">
+      <span>© 2026 Nouvel Techno — Médenine, Tunisie. Tous droits réservés.</span>
+      <span>Formation • Innovation • Avenir</span>
+    </div>
+  </footer>
+
+  <a class="btn-whatsapp" href="https://wa.me/216900000000?text=Bonjour%20Nouvel%20Techno%2C%20je%20souhaite%20un%20renseignement."
+     target="_blank" rel="noopener" aria-label="Nous écrire sur WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+  </a>
+  <button class="btn-haut" aria-label="Retour en haut de page">↑</button>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

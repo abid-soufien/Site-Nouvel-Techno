@@ -1,0 +1,224 @@
+/* ==========================================================================
+   NOUVEL TECHNO — Styles de l'administration (css/admin.css)
+   Interface sobre et fonctionnelle, indépendante du site public.
+   ========================================================================== */
+
+:root {
+  --bleu: #0b1f3a;
+  --violet: #7c3aed;
+  --cyan: #22d3ee;
+  --gris-fond: #f2f4f9;
+  --gris-bordure: #dfe4ef;
+  --danger: #d61f69;
+  --succes: #0e9f6e;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  background: var(--gris-fond);
+  color: var(--bleu);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+/* ---------- Connexion ---------- */
+.ecran-connexion {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #071527, #0b1f3a 50%, #2b1e5c);
+  padding: 20px;
+}
+.boite-connexion {
+  background: #fff;
+  border-radius: 18px;
+  padding: 38px 34px;
+  width: min(400px, 100%);
+  text-align: center;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+.boite-connexion h1 { font-size: 1.3rem; margin-bottom: 4px; }
+.boite-connexion p { color: #5b6478; font-size: 0.9rem; margin-bottom: 20px; }
+.erreur-connexion { display: none; color: var(--danger); font-weight: 600; }
+.erreur-connexion.visible { display: block; }
+.retour-site { display: inline-block; margin-top: 16px; font-size: 0.85rem; color: #5b6478; }
+
+/* ---------- Champs & boutons (communs) ---------- */
+.groupe { margin-bottom: 16px; text-align: left; }
+.groupe label { display: block; font-weight: 700; font-size: 0.82rem; margin-bottom: 5px; }
+.groupe input, .groupe select, .groupe textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--gris-bordure);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.92rem;
+  background: #fbfcfe;
+}
+.groupe input:focus { outline: none; border-color: var(--violet); }
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.btn-primaire { background: linear-gradient(120deg, #1e3a8a, var(--violet)); color: #fff; }
+.btn-primaire:hover { transform: translateY(-1px); }
+.btn-contour { background: #fff; border-color: var(--gris-bordure); color: var(--bleu); }
+.btn-contour:hover { border-color: var(--violet); color: var(--violet); }
+.btn-danger { background: #fff; border-color: #f3c1d3; color: var(--danger); }
+.btn-danger:hover { background: var(--danger); color: #fff; }
+
+/* ---------- En-tête admin ---------- */
+.admin-entete { background: var(--bleu); color: #fff; }
+.admin-entete-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 4%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* ---------- Onglets ---------- */
+.admin-onglets {
+  max-width: 1200px;
+  margin: 18px auto 0;
+  padding: 0 4%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.onglet {
+  border: 1px solid var(--gris-bordure);
+  background: #fff;
+  padding: 9px 16px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: var(--bleu);
+}
+.onglet:hover { border-color: var(--violet); color: var(--violet); }
+.onglet.actif { background: var(--violet); border-color: var(--violet); color: #fff; }
+
+/* ---------- Panneaux ---------- */
+.admin-contenu { max-width: 1200px; margin: 0 auto; padding: 22px 4% 60px; }
+.panneau { display: none; }
+.panneau.actif { display: block; }
+
+.panneau-tete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.panneau-tete h2 { font-size: 1.15rem; }
+
+.aide {
+  font-size: 0.83rem;
+  color: #5b6478;
+  background: #eef2ff;
+  border: 1px solid #dbe3f8;
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+}
+
+/* ---------- Éditeurs JSON ---------- */
+.editeur-json {
+  width: 100%;
+  min-height: 380px;
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  padding: 16px;
+  border: 1px solid var(--gris-bordure);
+  border-radius: 12px;
+  background: #fff;
+  resize: vertical;
+}
+.editeur-json:focus { outline: none; border-color: var(--violet); }
+.editeur-json.invalide { border-color: var(--danger); background: #fff5f8; }
+
+.actions-editeur { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+
+/* ---------- Messages reçus ---------- */
+.carte-message {
+  background: #fff;
+  border: 1px solid var(--gris-bordure);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+}
+.carte-message .type {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: #1e3a8a;
+  margin-bottom: 8px;
+}
+.carte-message .type.inscription { background: #e7f8f1; color: var(--succes); }
+.carte-message .type.devis { background: #fff4e0; color: #c27803; }
+.carte-message .type.newsletter { background: #e0f7fa; color: #0891b2; }
+.carte-message .date { float: right; font-size: 0.78rem; color: #8a93a8; }
+.carte-message pre {
+  white-space: pre-wrap;
+  font-family: inherit;
+  font-size: 0.88rem;
+  color: #3d4658;
+}
+.carte-message .supprimer {
+  margin-top: 10px;
+  border: none;
+  background: none;
+  color: var(--danger);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.vide { text-align: center; color: #8a93a8; padding: 40px 0; }
+
+/* ---------- Paramètres ---------- */
+.grille-parametres { display: grid; grid-template-columns: 1fr 1fr; gap: 0 22px; max-width: 860px; }
+.grille-parametres .actions-editeur { grid-column: 1 / -1; }
+
+/* ---------- Toast ---------- */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 26px;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--bleu);
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  opacity: 0;
+  transition: 0.3s;
+  z-index: 500;
+}
+.toast.visible { transform: translateX(-50%); opacity: 1; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 700px) {
+  .grille-parametres { grid-template-columns: 1fr; }
+  .panneau-tete { flex-direction: column; align-items: flex-start; }
+}

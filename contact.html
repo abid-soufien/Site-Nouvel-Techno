@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- ============================================================
+       NOUVEL TECHNO — Page Contact
+       Formulaire de contact + demande de devis entreprise
+       + coordonnées + carte de localisation (Google Maps)
+       ============================================================ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Nouvel Techno | Médenine, Tunisie</title>
+  <meta name="description" content="Contactez Nouvel Techno à Médenine : renseignements, demande de devis pour entreprises, visite du centre. Réponse sous 24 h ouvrées.">
+  <link rel="icon" type="image/svg+xml" href="images/logos/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ==================== EN-TÊTE & NAVIGATION ==================== -->
+  <header class="entete">
+    <div class="conteneur entete-inner">
+      <a href="index.html" class="logo" aria-label="Nouvel Techno — Accueil">
+        <img src="images/logos/logo.svg" alt="">
+        <span>Nouvel&nbsp;<b>Techno</b></span>
+      </a>
+      <nav class="nav-desktop" aria-label="Navigation principale">
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="formations.html">Formations</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="formateurs.html">Formateurs</a></li>
+          <li><a href="temoignages.html">Témoignages</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html" class="actif">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="entete-actions">
+        <a class="btn btn-primaire" href="inscription.html">S'inscrire</a>
+        <button class="btn-menu" aria-label="Ouvrir le menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <nav class="nav-mobile" aria-label="Menu mobile">
+      <a href="index.html">Accueil</a>
+      <a href="formations.html">Formations</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="formateurs.html">Formateurs</a>
+      <a href="temoignages.html">Témoignages</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html" class="actif">Contact</a>
+      <a class="btn btn-primaire" href="inscription.html">S'inscrire</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ==================== BANDEAU ==================== -->
+    <section class="bandeau">
+      <div class="conteneur">
+        <h1>Contact</h1>
+        <p>Une question, un projet de formation, un devis entreprise ? Nous répondons sous 24 h ouvrées.</p>
+        <p class="fil-ariane"><a href="index.html">Accueil</a> / Contact</p>
+      </div>
+    </section>
+
+    <!-- ==================== COORDONNÉES + FORMULAIRE ==================== -->
+    <section class="section">
+      <div class="conteneur grille grille-2" style="align-items:start;">
+
+        <!-- Coordonnées -->
+        <div class="encart-contact reveal">
+          <h2 style="margin-bottom:20px;">Nos coordonnées</h2>
+
+          <div class="ligne">
+            <div class="icone">📍</div>
+            <div><b>Adresse</b><span>Avenue Habib Bourguiba, Médenine 4100, Tunisie</span></div>
+          </div>
+          <div class="ligne">
+            <div class="icone">📞</div>
+            <div><b>Téléphone / WhatsApp</b><span><a href="tel:+216900000000">+216 90 000 000</a></span></div>
+          </div>
+          <div class="ligne">
+            <div class="icone">✉️</div>
+            <div><b>E-mail</b><span><a href="mailto:contact@nouveltechno.tn">contact@nouveltechno.tn</a></span></div>
+          </div>
+          <div class="ligne">
+            <div class="icone">🕘</div>
+            <div><b>Horaires</b><span>Lundi – Samedi : 08h30 – 18h00</span></div>
+          </div>
+
+          <!-- Carte de localisation (Google Maps intégrée, sans clé API) -->
+          <div class="carte-map" style="margin-top:22px;">
+            <iframe
+              src="https://www.google.com/maps?q=M%C3%A9denine,+Tunisie&output=embed"
+              title="Localisation de Nouvel Techno à Médenine"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <!-- Formulaire de contact -->
+        <div class="reveal">
+          <form class="formulaire" id="form-contact" novalidate>
+            <h2 style="margin-bottom:20px;">Envoyez-nous un message</h2>
+            <div class="message-succes">✅ Message envoyé ! Nous vous répondrons sous 24 h ouvrées.</div>
+
+            <div class="rangée">
+              <div class="groupe">
+                <label for="c-nom">Nom complet <span class="obligatoire">*</span></label>
+                <input type="text" id="c-nom" name="nom" required autocomplete="name">
+                <span class="erreur">Veuillez saisir votre nom.</span>
+              </div>
+              <div class="groupe">
+                <label for="c-email">E-mail <span class="obligatoire">*</span></label>
+                <input type="email" id="c-email" name="email" required autocomplete="email">
+                <span class="erreur">Adresse e-mail invalide.</span>
+              </div>
+            </div>
+
+            <div class="groupe">
+              <label for="c-sujet">Sujet <span class="obligatoire">*</span></label>
+              <select id="c-sujet" name="sujet" required>
+                <option value="">— Choisir un sujet —</option>
+                <option value="renseignement">Renseignement sur une formation</option>
+                <option value="devis">Demande de devis (entreprise)</option>
+                <option value="visite">Visite du centre</option>
+                <option value="partenariat">Partenariat</option>
+                <option value="autre">Autre</option>
+              </select>
+              <span class="erreur">Veuillez choisir un sujet.</span>
+            </div>
+
+            <div class="groupe">
+              <label for="c-message">Message <span class="obligatoire">*</span></label>
+              <textarea id="c-message" name="message" required></textarea>
+              <span class="erreur">Veuillez écrire votre message.</span>
+            </div>
+
+            <button class="btn btn-primaire" type="submit" style="width:100%;justify-content:center;">Envoyer le message</button>
+            <p class="note-confidentialite">Vos données ne sont utilisées que pour répondre à votre demande.</p>
+          </form>
+
+          <!-- Formulaire de demande de devis entreprise -->
+          <form class="formulaire" id="form-devis" style="margin-top:30px;" novalidate>
+            <h2 style="margin-bottom:6px;">Demande de devis — Entreprises</h2>
+            <p style="color:var(--gris-texte);font-size:.9rem;margin-bottom:20px;">Programmes sur mesure pour vos équipes. Devis gratuit et sans engagement.</p>
+            <div class="message-succes">✅ Demande reçue ! Notre équipe vous contactera avec une proposition détaillée.</div>
+
+            <div class="rangée">
+              <div class="groupe">
+                <label for="d-entreprise">Entreprise <span class="obligatoire">*</span></label>
+                <input type="text" id="d-entreprise" name="entreprise" required autocomplete="organization">
+                <span class="erreur">Nom d'entreprise requis.</span>
+              </div>
+              <div class="groupe">
+                <label for="d-contact">Personne à contacter <span class="obligatoire">*</span></label>
+                <input type="text" id="d-contact" name="contact" required>
+                <span class="erreur">Nom requis.</span>
+              </div>
+            </div>
+
+            <div class="rangée">
+              <div class="groupe">
+                <label for="d-email">E-mail professionnel <span class="obligatoire">*</span></label>
+                <input type="email" id="d-email" name="email" required>
+                <span class="erreur">Adresse e-mail invalide.</span>
+              </div>
+              <div class="groupe">
+                <label for="d-telephone">Téléphone <span class="obligatoire">*</span></label>
+                <input type="tel" id="d-telephone" name="telephone" required autocomplete="tel">
+                <span class="erreur">Numéro requis.</span>
+              </div>
+            </div>
+
+            <div class="groupe">
+              <label for="d-effectif">Nombre de participants</label>
+              <select id="d-effectif" name="effectif">
+                <option value="1-5">1 à 5</option>
+                <option value="6-15">6 à 15</option>
+                <option value="16-30">16 à 30</option>
+                <option value="30+">Plus de 30</option>
+              </select>
+            </div>
+
+            <div class="groupe">
+              <label for="d-besoins">Vos besoins <span class="obligatoire">*</span></label>
+              <textarea id="d-besoins" name="besoins" required placeholder="Ex. : formation IA pour l'équipe marketing, cybersécurité pour les techniciens IT…"></textarea>
+              <span class="erreur">Décrivez brièvement vos besoins.</span>
+            </div>
+
+            <button class="btn btn-primaire" type="submit" style="width:100%;justify-content:center;">Demander un devis gratuit</button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== PIED DE PAGE ==================== -->
+  <footer class="pied">
+    <div class="conteneur pied-grille">
+      <div>
+        <a href="index.html" class="logo"><img src="images/logos/logo-blanc.svg" alt=""><span>Nouvel&nbsp;<b>Techno</b></span></a>
+        <p class="presentation">Centre de formation technologique à Médenine : des compétences pratiques, accessibles et demandées sur le marché.</p>
+        <div class="reseaux">
+          <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+          <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube">YT</a>
+        </div>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="formations.html">Formations</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="formateurs.html">Formateurs</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Formations</h4>
+        <ul>
+          <li><a href="formations.html">IA & Machine Learning</a></li>
+          <li><a href="formations.html">Développement Web</a></li>
+          <li><a href="formations.html">Cybersécurité</a></li>
+          <li><a href="formations.html">Cloud Computing</a></li>
+          <li><a href="contact.html?type=devis">Devis entreprises</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>Avenue Habib Bourguiba, Médenine 4100, Tunisie</li>
+          <li><a href="tel:+216900000000">+216 90 000 000</a></li>
+          <li><a href="mailto:contact@nouveltechno.tn">contact@nouveltechno.tn</a></li>
+          <li>Lun – Sam : 08h30 – 18h00</li>
+        </ul>
+        <form data-newsletter style="margin-top:14px;" aria-label="Inscription à la newsletter">
+          <div class="newsletter">
+            <input type="email" placeholder="Votre e-mail" required aria-label="Adresse e-mail">
+            <button class="btn btn-primaire" type="submit">OK</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="conteneur pied-bas">
+      <span>© 2026 Nouvel Techno — Médenine, Tunisie. Tous droits réservés.</span>
+      <span>Formation • Innovation • Avenir</span>
+    </div>
+  </footer>
+
+  <a class="btn-whatsapp" href="https://wa.me/216900000000?text=Bonjour%20Nouvel%20Techno%2C%20je%20souhaite%20un%20renseignement."
+     target="_blank" rel="noopener" aria-label="Nous écrire sur WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+  </a>
+  <button class="btn-haut" aria-label="Retour en haut de page">↑</button>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    /* Si l'URL contient ?type=devis (lien "Demander un devis"),
+       faire défiler jusqu'au formulaire de devis. */
+    if (new URLSearchParams(location.search).get("type") === "devis") {
+      window.addEventListener("DOMContentLoaded", () =>
+        document.getElementById("form-devis")?.scrollIntoView({ behavior: "smooth" }));
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- ============================================================
+       NOUVEL TECHNO — Administration (page cachée)
+       ------------------------------------------------------------
+       ⚠ Cette page n'est liée depuis AUCUNE page publique du site.
+       Accès : nouvel-techno/admin.html
+       Mot de passe par défaut : nouvel2026 (modifiable dans Paramètres)
+
+       Fonctions :
+       - Consultation des messages reçus (inscriptions, contacts,
+         devis, newsletter) envoyés depuis le site
+       - Modification du contenu (formations, sessions, formateurs,
+         témoignages, articles) — stocké dans le navigateur
+       - Export / import des données (JSON) et miroir fichier texte
+         data/site-content.txt
+       ============================================================ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Administration — Nouvel Techno</title>
+  <link rel="icon" type="image/svg+xml" href="images/logos/favicon.svg">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+  <!-- ==================== ÉCRAN DE CONNEXION ==================== -->
+  <div class="ecran-connexion" id="ecran-connexion">
+    <form class="boite-connexion" id="form-connexion">
+      <img src="images/logos/logo.svg" alt="" style="height:52px;margin:0 auto 14px;">
+      <h1>Espace administrateur</h1>
+      <p>Gestion du site Nouvel Techno</p>
+      <div class="groupe">
+        <label for="motdepasse">Mot de passe</label>
+        <input type="password" id="motdepasse" required autocomplete="current-password">
+      </div>
+      <p class="erreur-connexion" id="erreur-connexion">Mot de passe incorrect.</p>
+      <button class="btn btn-primaire" type="submit">Se connecter</button>
+      <a class="retour-site" href="index.html">← Retour au site</a>
+    </form>
+  </div>
+
+  <!-- ==================== INTERFACE D'ADMINISTRATION ==================== -->
+  <div id="interface-admin" hidden>
+
+    <header class="admin-entete">
+      <div class="admin-entete-inner">
+        <strong>⚙️ Administration — Nouvel Techno</strong>
+        <div>
+          <a class="btn btn-contour" href="index.html" target="_blank">Voir le site</a>
+          <button class="btn btn-contour" id="btn-deconnexion">Déconnexion</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Onglets -->
+    <nav class="admin-onglets" aria-label="Sections d'administration">
+      <button class="onglet actif" data-onglet="messages">📥 Messages</button>
+      <button class="onglet" data-onglet="formations">🎓 Formations</button>
+      <button class="onglet" data-onglet="sessions">📅 Sessions</button>
+      <button class="onglet" data-onglet="formateurs">👥 Formateurs</button>
+      <button class="onglet" data-onglet="temoignages">💬 Témoignages</button>
+      <button class="onglet" data-onglet="articles">📰 Articles</button>
+      <button class="onglet" data-onglet="parametres">🔧 Paramètres</button>
+      <button class="onglet" data-onglet="fichier">📄 Fichier texte</button>
+    </nav>
+
+    <main class="admin-contenu">
+
+      <!-- ---------- Onglet Messages reçus ---------- -->
+      <section class="panneau actif" id="panneau-messages">
+        <div class="panneau-tete">
+          <h2>Messages reçus du site</h2>
+          <div>
+            <button class="btn btn-contour" id="export-messages">Exporter (CSV)</button>
+            <button class="btn btn-danger" id="vider-messages">Tout supprimer</button>
+          </div>
+        </div>
+        <p class="aide">Inscriptions, contacts, demandes de devis et abonnements newsletter envoyés depuis le site public. Stockés dans ce navigateur.</p>
+        <div id="liste-messages"></div>
+      </section>
+
+      <!-- ---------- Onglets de contenu (éditeurs) ---------- -->
+      <section class="panneau" id="panneau-formations">
+        <div class="panneau-tete">
+          <h2>Formations</h2>
+          <button class="btn btn-contour" data-ajouter="formations">+ Ajouter</button>
+        </div>
+        <p class="aide">Champs : id (unique, sans espaces), titre, categorie (ia | dev | cyber | cloud | entreprise), niveau (debutant | intermediaire | avance), duree, format (presentiel | ligne | hybride), prix (« Sur demande » possible), resume, competences (liste), prerequis, certificat, icone (emoji).</p>
+        <textarea class="editeur-json" id="editeur-formations" spellcheck="false"></textarea>
+        <div class="actions-editeur">
+          <button class="btn btn-primaire" data-sauver="formations">Enregistrer</button>
+          <button class="btn btn-contour" data-restaurer="formations">Annuler les modifications</button>
+        </div>
+      </section>
+
+      <section class="panneau" id="panneau-sessions">
+        <div class="panneau-tete">
+          <h2>Sessions (calendrier)</h2>
+          <button class="btn btn-contour" data-ajouter="sessions">+ Ajouter</button>
+        </div>
+        <p class="aide">Champs : id, formationId (doit correspondre à l'id d'une formation), date (AAAA-MM-JJ), horaire, lieu, places.</p>
+        <textarea class="editeur-json" id="editeur-sessions" spellcheck="false"></textarea>
+        <div class="actions-editeur">
+          <button class="btn btn-primaire" data-sauver="sessions">Enregistrer</button>
+          <button class="btn btn-contour" data-restaurer="sessions">Annuler les modifications</button>
+        </div>
+      </section>
+
+      <section class="panneau" id="panneau-formateurs">
+        <div class="panneau-tete">
+          <h2>Formateurs</h2>
+          <button class="btn btn-contour" data-ajouter="formateurs">+ Ajouter</button>
+        </div>
+        <p class="aide">Champs : id, nom, specialite, experience, bio, initiales (2 lettres). Photo : déposer une image images/equipe/{id}.svg (ou .jpg en adaptant main.js).</p>
+        <textarea class="editeur-json" id="editeur-formateurs" spellcheck="false"></textarea>
+        <div class="actions-editeur">
+          <button class="btn btn-primaire" data-sauver="formateurs">Enregistrer</button>
+          <button class="btn btn-contour" data-restaurer="formateurs">Annuler les modifications</button>
+        </div>
+      </section>
+
+      <section class="panneau" id="panneau-temoignages">
+        <div class="panneau-tete">
+          <h2>Témoignages</h2>
+          <button class="btn btn-contour" data-ajouter="temoignages">+ Ajouter</button>
+        </div>
+        <p class="aide">Champs : id, nom, role, formation, note (1 à 5), texte.</p>
+        <textarea class="editeur-json" id="editeur-temoignages" spellcheck="false"></textarea>
+        <div class="actions-editeur">
+          <button class="btn btn-primaire" data-sauver="temoignages">Enregistrer</button>
+          <button class="btn btn-contour" data-restaurer="temoignages">Annuler les modifications</button>
+        </div>
+      </section>
+
+      <section class="panneau" id="panneau-articles">
+        <div class="panneau-tete">
+          <h2>Articles du blog</h2>
+          <button class="btn btn-contour" data-ajouter="articles">+ Ajouter</button>
+        </div>
+        <p class="aide">Champs : id, titre, categorie (ia | dev | cyber | cloud | entreprise), date (AAAA-MM-JJ), extrait, contenu (paragraphes séparés par une ligne vide). Image : images/blog/{id}.svg.</p>
+        <textarea class="editeur-json" id="editeur-articles" spellcheck="false"></textarea>
+        <div class="actions-editeur">
+          <button class="btn btn-primaire" data-sauver="articles">Enregistrer</button>
+          <button class="btn btn-contour" data-restaurer="articles">Annuler les modifications</button>
+        </div>
+      </section>
+
+      <!-- ---------- Onglet Paramètres ---------- -->
+      <section class="panneau" id="panneau-parametres">
+        <div class="panneau-tete"><h2>Paramètres du site</h2></div>
+
+        <form id="form-parametres" class="grille-parametres">
+          <div class="groupe">
+            <label for="p-email">E-mail de contact</label>
+            <input type="email" id="p-email">
+          </div>
+          <div class="groupe">
+            <label for="p-telephone">Téléphone affiché</label>
+            <input type="text" id="p-telephone">
+          </div>
+          <div class="groupe">
+            <label for="p-whatsapp">WhatsApp (format international sans + , ex. 216900000000)</label>
+            <input type="text" id="p-whatsapp">
+          </div>
+          <div class="groupe">
+            <label for="p-adresse">Adresse</label>
+            <input type="text" id="p-adresse">
+          </div>
+          <div class="groupe">
+            <label for="p-horaires">Horaires</label>
+            <input type="text" id="p-horaires">
+          </div>
+          <div class="groupe">
+            <label for="p-mdp">Nouveau mot de passe admin (laisser vide pour ne pas changer)</label>
+            <input type="password" id="p-mdp" autocomplete="new-password">
+          </div>
+          <div class="actions-editeur">
+            <button class="btn btn-primaire" type="submit">Enregistrer les paramètres</button>
+            <button class="btn btn-danger" type="button" id="reinitialiser-donnees">Réinitialiser tout le contenu</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- ---------- Onglet Fichier texte ---------- -->
+      <section class="panneau" id="panneau-fichier">
+        <div class="panneau-tete">
+          <h2>Fichier texte d'administration</h2>
+          <button class="btn btn-primaire" id="export-txt">Télécharger site-content.txt</button>
+        </div>
+        <p class="aide">
+          Le fichier <b>data/site-content.txt</b> sert de « bloc-notes » d'administration :
+          vous pouvez y préparer le contenu (formations, sessions, articles…) puis le coller ici.
+          Format attendu : JSON identique à celui des éditeurs ci-dessus (clé « formations », « sessions », etc.).
+        </p>
+        <textarea class="editeur-json" id="editeur-txt" spellcheck="false" style="min-height:340px;"></textarea>
+        <div class="actions-editeur">
+          <button class="btn btn-primaire" id="importer-txt">Importer ce contenu vers le site</button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

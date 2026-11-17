@@ -1,0 +1,173 @@
+==============================================================================
+ NOUVEL TECHNO — FICHIER D'ADMINISTRATION DU SITE (bloc-notes)
+ Centre de formation en ligne — Médenine, Tunisie
+==============================================================================
+
+À QUOI SERT CE FICHIER ?
+------------------------
+Ce fichier texte est l'un des deux outils d'administration du site :
+
+  1. LA PAGE ADMIN CACHÉE  :  admin.html
+     - Non liée depuis aucune page publique (invisible pour les visiteurs).
+     - Mot de passe par défaut : nouvel2026
+     - Permet de modifier formations, sessions, formateurs, témoignages,
+       articles, coordonnées, et de consulter les messages reçus.
+
+  2. CE FICHIER TEXTE  :  data/site-content.txt
+     - Sert de « bloc-notes » pour préparer le contenu à la main
+       (avec le Bloc-notes Windows, Notepad, VS Code…).
+     - Le bloc JSON en bas de fichier peut être collé dans admin.html
+       (onglet « Fichier texte » > Importer) pour mettre le site à jour.
+     - Vous pouvez aussi éditer directement js/data.js pour rendre les
+       changements permanents pour tous les visiteurs.
+
+IMPORTANT — Comment fonctionnent les modifications ?
+----------------------------------------------------
+- Via admin.html : les changements sont stockés dans le NAVIGATEUR de
+  l'ordinateur utilisé (localStorage). Le site les affiche immédiatement
+  sur ce navigateur.
+- Pour appliquer un changement à TOUS les visiteurs : reporter les mêmes
+  valeurs dans js/data.js (ou transmettre le JSON à votre développeur).
+
+==============================================================================
+ COORDONNÉES DU CENTRE
+==============================================================================
+Nom       : Nouvel Techno
+Ville     : Médenine 4100, Tunisie
+Adresse   : Avenue Habib Bourguiba, Médenine 4100, Tunisie
+Téléphone : +216 90 000 000            (à remplacer par le vrai numéro)
+WhatsApp  : 216900000000               (format international sans "+")
+E-mail    : contact@nouveltechno.tn    (à remplacer par la vraie adresse)
+Horaires  : Lundi – Samedi : 08h30 – 18h00
+
+⚠ Pensez aussi à remplacer le numéro WhatsApp dans les boutons flottants
+  des pages HTML (recherchez « wa.me/216900000000 »).
+
+==============================================================================
+ FORMATIONS (6 pôles)
+==============================================================================
+1. Intelligence Artificielle & Machine Learning — Intermédiaire — 3 mois (72 h)
+   Hybride — 850 DT — Certificat de fin de formation
+2. Développement Web & Applications — Débutant — 4 mois (96 h)
+   Présentiel — 790 DT — Certificat + projet portfolio
+3. Cybersécurité — Avancé — 3 mois (72 h)
+   En ligne — 990 DT — Préparation certification CEH
+4. Cloud Computing — Intermédiaire — 2 mois (48 h)
+   Hybride — 750 DT — Préparation AWS Cloud Practitioner
+5. Prompt Engineering & Outils d'IA pour les entreprises — Débutant —
+   3 semaines (21 h) — En ligne — 350 DT
+6. Formations pour entreprises & équipes — Sur mesure — Présentiel —
+   Sur demande
+
+==============================================================================
+ CALENDRIER DES PROCHAINES SESSIONS
+==============================================================================
+• 2026-01-12 — Prompt Engineering — En ligne (Zoom) — 18h00-21h00 — 20 places
+• 2026-01-19 — Développement Web — Centre de Médenine — 09h00-12h00 — 15 places
+• 2026-02-02 — IA & Machine Learning — Hybride — 17h30-20h30 — 18 places
+• 2026-02-16 — Cloud Computing — Hybride — 14h00-17h00 — 16 places
+• 2026-03-02 — Cybersécurité — En ligne (Zoom) — 18h00-21h00 — 14 places
+
+==============================================================================
+ BLOC JSON — À COPIER DANS admin.html > « Fichier texte » > Importer
+==============================================================================
+
+{
+  "formations": [
+    {
+      "id": "ia-ml",
+      "titre": "Intelligence Artificielle & Machine Learning",
+      "categorie": "ia",
+      "niveau": "intermediaire",
+      "duree": "3 mois (72 h)",
+      "format": "hybride",
+      "prix": "850 DT",
+      "resume": "Maîtrisez les fondamentaux de l'IA et du Machine Learning : manipulation de données, entraînement de modèles et mise en production de premiers cas d'usage concrets.",
+      "competences": ["Python pour la data science", "Régression, classification, clustering", "Réseaux de neurones avec TensorFlow", "Évaluation et déploiement de modèles"],
+      "prerequis": "Bases de Python recommandées (ou notre module d'initiation offert)",
+      "certificat": "Certificat de fin de formation Nouvel Techno",
+      "icone": "🤖"
+    },
+    {
+      "id": "dev-web",
+      "titre": "Développement Web & Applications",
+      "categorie": "dev",
+      "niveau": "debutant",
+      "duree": "4 mois (96 h)",
+      "format": "presentiel",
+      "prix": "790 DT",
+      "resume": "Devenez développeur front-end et back-end : HTML5, CSS3, JavaScript ES6, puis React et Node.js, avec un projet professionnel complet en fin de parcours.",
+      "competences": ["HTML5 / CSS3 / JavaScript ES6", "React et gestion d'état", "API REST avec Node.js & Express", "Bases de données SQL & Git/GitHub"],
+      "prerequis": "Aucun prérequis technique — motivation et assiduité",
+      "certificat": "Certificat de fin de formation + projet portfolio",
+      "icone": "💻"
+    },
+    {
+      "id": "cybersecurite",
+      "titre": "Cybersécurité",
+      "categorie": "cyber",
+      "niveau": "avance",
+      "duree": "3 mois (72 h)",
+      "format": "ligne",
+      "prix": "990 DT",
+      "resume": "Protégez systèmes et réseaux : analyse de vulnérabilités, tests d'intrusion éthiques, sécurité des applications et réponse aux incidents.",
+      "competences": ["Sécurité des réseaux et des systèmes", "Pentesting éthique (Kali Linux)", "Sécurité web (OWASP Top 10)", "Cryptographie appliquée & SOC"],
+      "prerequis": "Bonnes bases réseaux (TCP/IP) et systèmes Linux",
+      "certificat": "Certificat de fin de formation — préparation Certification CEH",
+      "icone": "🛡️"
+    },
+    {
+      "id": "cloud",
+      "titre": "Cloud Computing",
+      "categorie": "cloud",
+      "niveau": "intermediaire",
+      "duree": "2 mois (48 h)",
+      "format": "hybride",
+      "prix": "750 DT",
+      "resume": "Déployez et administrez des infrastructures modernes : machines virtuelles, conteneurs Docker, Kubernetes et automatisation sur AWS et Azure.",
+      "competences": ["Fondamentaux AWS & Azure", "Virtualisation et conteneurs Docker", "Orchestration Kubernetes", "CI/CD et Infrastructure as Code"],
+      "prerequis": "Notions de systèmes et de réseaux",
+      "certificat": "Certificat de fin de formation — préparation AWS Cloud Practitioner",
+      "icone": "☁️"
+    },
+    {
+      "id": "prompt-ia",
+      "titre": "Prompt Engineering & Outils d'IA pour les entreprises",
+      "categorie": "ia",
+      "niveau": "debutant",
+      "duree": "3 semaines (21 h)",
+      "format": "ligne",
+      "prix": "350 DT",
+      "resume": "Exploitez ChatGPT, Copilot et les outils d'IA générative au quotidien : rédaction de prompts efficaces, automatisation de tâches et gain de productivité.",
+      "competences": ["Techniques de prompt engineering", "IA générative texte, image, données", "Automatisation de processus métier", "Éthique et limites de l'IA"],
+      "prerequis": "Aucun — ouvert à tous les profils",
+      "certificat": "Certificat de fin de formation",
+      "icone": "✨"
+    },
+    {
+      "id": "entreprises",
+      "titre": "Formations pour entreprises & équipes",
+      "categorie": "entreprise",
+      "niveau": "debutant",
+      "duree": "Sur mesure",
+      "format": "presentiel",
+      "prix": "Sur demande",
+      "resume": "Parcours personnalisés pour vos équipes : transformation digitale, montée en compétences tech, ateliers intra-entreprise dans vos locaux ou au centre.",
+      "competences": ["Audit de besoins et plan de formation", "Modules IA, cloud, cybersécurité, data", "Ateliers pratiques sur vos cas réels", "Suivi post-formation et évaluation"],
+      "prerequis": "Aucun — programme construit après diagnostic",
+      "certificat": "Attestation + rapport de compétences par équipe",
+      "icone": "🏢"
+    }
+  ],
+  "sessions": [
+    { "id": "s1", "formationId": "prompt-ia", "date": "2026-01-12", "horaire": "18h00 – 21h00", "lieu": "En ligne (Zoom)", "places": 20 },
+    { "id": "s2", "formationId": "dev-web", "date": "2026-01-19", "horaire": "09h00 – 12h00", "lieu": "Centre de Médenine", "places": 15 },
+    { "id": "s3", "formationId": "ia-ml", "date": "2026-02-02", "horaire": "17h30 – 20h30", "lieu": "Hybride", "places": 18 },
+    { "id": "s4", "formationId": "cloud", "date": "2026-02-16", "horaire": "14h00 – 17h00", "lieu": "Hybride", "places": 16 },
+    { "id": "s5", "formationId": "cybersecurite", "date": "2026-03-02", "horaire": "18h00 – 21h00", "lieu": "En ligne (Zoom)", "places": 14 }
+  ]
+}
+
+==============================================================================
+ Fin du fichier — Nouvel Techno
+==============================================================================

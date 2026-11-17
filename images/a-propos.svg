@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 420" width="560" height="420" role="img" aria-label="Notre centre de formation">
+  <defs>
+    <linearGradient id="fond" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2b1e5c"/><stop offset="1" stop-color="#1e3a8a"/>
+    </linearGradient>
+    <linearGradient id="carte" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.95"/><stop offset="1" stop-color="#ffffff" stop-opacity="0.85"/>
+    </linearGradient>
+  </defs>
+  <rect width="560" height="420" rx="24" fill="url(#fond)"/>
+  <circle cx="470" cy="70" r="130" fill="#22d3ee" opacity="0.18"/>
+  <circle cx="60" cy="380" r="110" fill="#a78bfa" opacity="0.22"/>
+
+  <!-- Fenêtre de code -->
+  <rect x="70" y="60" width="300" height="200" rx="14" fill="url(#carte)"/>
+  <circle cx="92" cy="82" r="6" fill="#ff5f57"/><circle cx="112" cy="82" r="6" fill="#febc2e"/><circle cx="132" cy="82" r="6" fill="#28c840"/>
+  <rect x="92" y="106" width="180" height="10" rx="5" fill="#1e3a8a" opacity="0.75"/>
+  <rect x="92" y="128" width="240" height="10" rx="5" fill="#7c3aed" opacity="0.6"/>
+  <rect x="92" y="150" width="140" height="10" rx="5" fill="#22d3ee" opacity="0.8"/>
+  <rect x="92" y="172" width="200" height="10" rx="5" fill="#1e3a8a" opacity="0.45"/>
+  <rect x="92" y="194" width="110" height="10" rx="5" fill="#7c3aed" opacity="0.45"/>
+
+  <!-- Certificat -->
+  <rect x="300" y="240" width="200" height="130" rx="14" fill="#ffffff"/>
+  <rect x="320" y="264" width="120" height="12" rx="6" fill="#0b1f3a" opacity="0.8"/>
+  <rect x="320" y="288" width="160" height="8" rx="4" fill="#5b6478" opacity="0.4"/>
+  <rect x="320" y="304" width="140" height="8" rx="4" fill="#5b6478" opacity="0.4"/>
+  <circle cx="452" cy="330" r="20" fill="none" stroke="#c27803" stroke-width="4"/>
+  <path d="M444 330l6 6 12-12" fill="none" stroke="#c27803" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Graphique IA -->
+  <polyline points="90,390 150,360 210,372 270,330 330,340 390,300 450,310 510,270"
+    fill="none" stroke="#22d3ee" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="510" cy="270" r="7" fill="#22d3ee"/>
+</svg>
